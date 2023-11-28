@@ -80,8 +80,13 @@ def predict():
         # Make prediction using the model
         prediction = model.predict(features)
 
+        answer = "No"
+
+        if(prediction[0][0] >= 0.5):
+            answer = "Yes"
+
         # Format the prediction result
-        prediction_text = f"The predicted outcome is: {prediction}"
+        prediction_text = f"The predicted outcome is: {answer} ({round(prediction[0][0]*100, 2)}%)"
 
         return render_template("index.html", prediction_text=prediction_text)
 
