@@ -1,41 +1,105 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
-<head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  
-</head>
+<html>
+  <!--From https://codepen.io/frytyler/pen/EGdtg-->
+  <head>
+    <meta charset="UTF-8" />
+    <title>ML API</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
-<body>
- <div class="login">
-	<h1>Recidivism Predictor</h1>
+  <body>
+    <div class="login">
+      <h1>Recidivism Predictor</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="age" placeholder="age" required="required" />
-        <input type="text" name="priors_count" placeholder="priors_count" required="required" />
-		<input type="text" name="v_decile_score" placeholder="v_decile_score" required="required" />
-		<input type="text" name="decile_score" placeholder="decile_score" required="required" />
-    <input type="text" name="length_of_stay" placeholder="length_of_stay" required="required" />
-    <input type="text" name="c_charge_degree" placeholder="c_charge_degree" required="required" />
-    <input type="text" name="race" placeholder="race" required="required" />
-    <input type="text" name="age_cat" placeholder="age_cat" required="required" />
-    <input type="text" name="sex" placeholder="sex" required="required" />
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <input
+          type="text"
+          name="age"
+          placeholder="Age"
+          required="required"
+        /><br /><br />
+        <input
+          type="text"
+          name="priors_count"
+          placeholder="Prior Counts"
+          required="required"
+        /><br /><br />
+        <input
+          type="text"
+          name="v_decile_score"
+          placeholder="V Decile Score"
+          required="required"
+        /><br /><br />
+        <input
+          type="text"
+          name="decile_score"
+          placeholder="Decile Score"
+          required="required"
+        /><br /><br />
+        <input
+          type="text"
+          name="length_of_stay"
+          placeholder="Length of Stay"
+          required="required"
+        /><br /><br />
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+        <select name="c_charge_degree" required="required">
+          <option value="" disabled selected>Select Charge Degree</option>
+          <option value="F">F</option>
+          <option value="M">M</option></select
+        ><br /><br />
 
-   <br>
-   <br>
-   {{ prediction_text }}
+        <select name="race" required="required">
+          <option value="" disabled selected>Select Race</option>
+          <option value="African-American">African-American</option>
+          <option value="Asian">Asian</option>
+          <option value="Caucasian">Caucasian</option>
+          <option value="Hispanic">Hispanic</option>
+          <option value="Native American">Native American</option>
+          <option value="Other">Other</option></select
+        ><br /><br />
 
- </div>
+        <select name="age_cat" required="required">
+          <option value="" disabled selected>Select Age Category</option>
+          <option value="25 - 45">25 - 45</option>
+          <option value="Greater than 45">Greater than 45</option>
+          <option value="Less than 25">Less than 25</option></select
+        ><br /><br />
 
+        <select name="sex" required="required">
+          <option value="" disabled selected>Select Sex</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option></select
+        ><br /><br />
 
-</body>
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Predict
+        </button>
+      </form>
+
+      <br />
+      <br />
+      <p>{{ prediction_text }}</p>
+    </div>
+  </body>
 </html>
