@@ -7,6 +7,15 @@ flask_app = Flask(__name__)
 model = pickle.load(open("model2.pkl", "rb"))
 
 
+def get_age_category(age):
+    if age < 25:
+        return "Less than 25"
+    elif age >= 25 and age <= 45:
+        return "25 - 45"
+    else:
+        return "Greater than 45"
+
+
 @flask_app.route("/")
 def Home():
     return render_template("index.html")
@@ -25,7 +34,7 @@ def predict():
         # Process categorical inputs
         c_charge_degree = request.form["c_charge_degree"]
         race = request.form["race"]
-        age_cat = request.form["age_cat"]
+        age_cat = get_age_category(age)
         sex = request.form["sex"]
 
         # Map categorical inputs to encoded values based on model's expectations
