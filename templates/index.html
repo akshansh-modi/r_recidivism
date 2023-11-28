@@ -13,14 +13,19 @@
 
 <body>
  <div class="login">
-	<h1>Flower Class Prediction</h1>
+	<h1>Recidivism Predictor</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Sepal_Length" placeholder="Sepal_Length" required="required" />
-        <input type="text" name="Sepal_Width" placeholder="Sepal_Width" required="required" />
-		<input type="text" name="Petal_Length" placeholder="Petal_Length" required="required" />
-		<input type="text" name="Petal_Width" placeholder="Petal_Width" required="required" />
+    	<input type="text" name="age" placeholder="age" required="required" />
+        <input type="text" name="priors_count" placeholder="priors_count" required="required" />
+		<input type="text" name="v_decile_score" placeholder="v_decile_score" required="required" />
+		<input type="text" name="decile_score" placeholder="decile_score" required="required" />
+    <input type="text" name="length_of_stay" placeholder="length_of_stay" required="required" />
+    <input type="text" name="c_charge_degree" placeholder="c_charge_degree" required="required" />
+    <input type="text" name="race" placeholder="race" required="required" />
+    <input type="text" name="age_cat" placeholder="age_cat" required="required" />
+    <input type="text" name="sex" placeholder="sex" required="required" />
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
