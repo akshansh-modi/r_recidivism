@@ -4,26 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>ML API</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Pacifico"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Arimo"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Hind:300"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
@@ -32,42 +13,37 @@
 
       <!-- Main Input For Receiving Query to our ML -->
       <form action="{{ url_for('predict')}}" method="post">
-        <input
-          type="text"
-          name="age"
-          placeholder="Age"
-          required="required"
-        /><br /><br />
+        <input type="text" name="age" placeholder="Age" required="required" />
         <input
           type="text"
           name="priors_count"
           placeholder="Prior Counts"
           required="required"
-        /><br /><br />
+        />
         <input
           type="text"
           name="v_decile_score"
           placeholder="V Decile Score"
           required="required"
-        /><br /><br />
+        />
         <input
           type="text"
           name="decile_score"
           placeholder="Decile Score"
           required="required"
-        /><br /><br />
+        />
         <input
           type="text"
           name="length_of_stay"
           placeholder="Length of Stay"
           required="required"
-        /><br /><br />
+        />
 
         <select name="c_charge_degree" required="required">
           <option value="" disabled selected>Select Charge Degree</option>
           <option value="F">F</option>
-          <option value="M">M</option></select
-        ><br /><br />
+          <option value="M">M</option>
+        </select>
 
         <select name="race" required="required">
           <option value="" disabled selected>Select Race</option>
@@ -76,29 +52,19 @@
           <option value="Caucasian">Caucasian</option>
           <option value="Hispanic">Hispanic</option>
           <option value="Native American">Native American</option>
-          <option value="Other">Other</option></select
-        ><br /><br />
+          <option value="Other">Other</option>
+        </select>
 
-        <select name="age_cat" required="required">
-          <option value="" disabled selected>Select Age Category</option>
-          <option value="25 - 45">25 - 45</option>
-          <option value="Greater than 45">Greater than 45</option>
-          <option value="Less than 25">Less than 25</option></select
-        ><br /><br />
-
+   
         <select name="sex" required="required">
           <option value="" disabled selected>Select Sex</option>
           <option value="Female">Female</option>
-          <option value="Male">Male</option></select
-        ><br /><br />
+          <option value="Male">Male</option>
+        </select>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">
-          Predict
-        </button>
+        <button type="submit" class="submit-button">Predict</button>
       </form>
 
-      <br />
-      <br />
       <p>{{ prediction_text }}</p>
     </div>
   </body>
